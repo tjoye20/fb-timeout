@@ -1,0 +1,10 @@
+<% if flash[:alert] || flash[:notice] %>
+ <div class="ui error message">
+    <p>
+      <%= flash[:alert]%>
+    </p>
+    <p>
+      <%= flash[:notice]%>
+    </p>
+  </div>
+<% end %>

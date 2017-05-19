@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MuteTwitterSpoilers</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2/semantic.min.css' %>
+    <%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2/semantic.min.js" %>
+    <%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" %>
+
+  </head>
+
+  <body>
+    <section>
+      <section class="ui middle aligned center aligned grid">
+        <div class="column">
+          <h1>Mute Twitter Spoilers</h1>
+          <p>
+            Quickly mute multiple followers that are tweeting spoilers on your timeline.
+          </p>
+            <%= render "layouts/flash" %>
+        </div>
+      </section>
+    </section>
+    <%= render "layouts/navbar" %>
+    <%= yield %>
+  </body>
+</html>
