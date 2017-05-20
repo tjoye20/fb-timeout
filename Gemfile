@@ -35,12 +35,13 @@ gem 'pry'
 gem 'rails-controller-testing'
 gem 'omniauth'
 gem 'omniauth-twitter'
-gem 'twitter'
+gem "koala"
 gem "binding_of_caller"
 gem 'webmock'
 gem 'simplecov', :require => false, :group => :test
 gem 'travis', '~> 1.8.2'
 gem 'rack', '~> 2.0.1'
+gem "google-api-client"
 
 
 
