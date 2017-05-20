@@ -1,9 +1,7 @@
 class SessionsController < ApplicationController
 
   def new
-    if current_user
-      redirect_to new_mutedphrase_path
-    end
+    redirect_to new_mutedphrase_path if current_user
   end
 
   def failure
