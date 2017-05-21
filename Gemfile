@@ -34,7 +34,8 @@ gem 'dotenv-rails', :groups => [:development, :test]
 gem 'pry'
 gem 'rails-controller-testing'
 gem 'omniauth'
-gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+gem "omniauth-google-oauth2"
 gem "koala"
 gem "binding_of_caller"
 gem 'webmock'
