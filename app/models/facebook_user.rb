@@ -1,5 +1,15 @@
 class FacebookUser < ApplicationRecord
   has_one :google_user, dependent: :destroy 
+  has_many :events, dependent: :destroy 
+  before_create :create_uuid
+
+  private 
+
+  def create_uuid 
+    begin
+      self.uuid = SecureRandom.uuid 
+    end while self.class.exits?(:uuid => uuid)
+  end
 
   protected
 
