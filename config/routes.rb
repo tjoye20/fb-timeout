@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   root "sessions#new"
   resources :sessions, only: [:new, :destroy]
+  resources :events 
 
   get '/sign-in', to: "sessions#new", as: "sign-in"
   get '/auth/facebook/callback', to: "users#facebook_create"
