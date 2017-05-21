@@ -10,36 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160928055821) do
+ActiveRecord::Schema.define(version: 20170521194135) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "followers", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "phrase_id"
-    t.string   "screen_name", null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.text     "mutedtweet"
-    t.index ["phrase_id"], name: "index_followers_on_phrase_id", using: :btree
-    t.index ["user_id"], name: "index_followers_on_user_id", using: :btree
-  end
-
-  create_table "phrases", force: :cascade do |t|
-    t.integer  "user_id"
-    t.string   "phrase",     null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_phrases_on_user_id", using: :btree
-  end
-
-  create_table "users", force: :cascade do |t|
+  create_table "facebook_users", force: :cascade do |t|
     t.string   "username",   null: false
     t.text     "token",      null: false
     t.text     "secret",     null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "email"
+    t.string   "picture"
   end
 
+  create_table "google_users", force: :cascade do |t|
+    t.string   "username"
+    t.string   "email"
+    t.string   "picture"
+    t.text     "token"
+    t.text     "secret"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "facebook_user_id"
+    t.index ["facebook_user_id"], name: "index_google_users_on_facebook_user_id", using: :btree
+  end
+
+  add_foreign_key "google_users", "facebook_users"
 end
