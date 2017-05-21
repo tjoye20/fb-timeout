@@ -1,5 +1,5 @@
 class FacebookUser < ApplicationRecord
-  has_one :google_user
+  has_one :google_user, dependent: :destroy 
 
   protected
 
