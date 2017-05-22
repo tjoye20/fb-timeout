@@ -10,6 +10,7 @@ class UsersController < ApplicationController
         @user = FacebookUser.find_by(username: auth_hash.info.name)
       end
       session[:user_id] = @user.id
+      binding.pry 
       redirect_to new_mutedphrase_path
     end
   end
