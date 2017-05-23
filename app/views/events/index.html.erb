@@ -1,0 +1,14 @@
+<% if @events.nil? %>
+<h1> Hello world</h1>
+<% else %>
+<section class="ui middle aligned center aligned grid">
+  <ul>
+    <% @events.each do |event| %>
+     <li> event.name </li>
+     <li> event.info </li>
+     <li> event.date </li>
+     <li> event.location </li>
+    <% end %>
+  </ul>
+</section>
+<% end %>

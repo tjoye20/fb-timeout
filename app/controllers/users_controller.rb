@@ -10,8 +10,7 @@ class UsersController < ApplicationController
         @user = FacebookUser.find_by(username: auth_hash.info.name)
       end
       session[:user_id] = @user.id
-      binding.pry 
-      redirect_to new_mutedphrase_path
+      redirect_to events_path
     end
   end
 
@@ -19,13 +18,12 @@ class UsersController < ApplicationController
     if params[:denied]
       redirect_to sessions_path
     else
-      if !(GoogleUser.find_by(username: auth_hash.info.nickname))
+      if !(GoogleUser.find_by(email: auth_hash.info.email))
         @user = GoogleUser.create_user(auth_hash, current_user.id)
       else
-        @user = GoogleUser.find_by(username: auth_hash.info.nickname)
+        @user = GoogleUser.find_by(email: auth_hash.info.email)
       end
-      session[:user_id] = @user.id
-      redirect_to new_mutedphrase_path
+      redirect_to events_path
     end
   end
 
