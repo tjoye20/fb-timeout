@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+	before_action :google_client
 
 	def index 
 		binding.pry 

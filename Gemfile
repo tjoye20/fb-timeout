@@ -42,8 +42,7 @@ gem 'webmock'
 gem 'simplecov', :require => false, :group => :test
 gem 'travis', '~> 1.8.2'
 gem 'rack', '~> 2.0.1'
-gem "google-api-client"
-
+gem 'google-api-client', '0.8.2', require: 'google/api_client' 
 
 
 group :development, :test do
