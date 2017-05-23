@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
 
 	def index 
+		binding.pry 
 		@events = current_user.events
 	end 
 
