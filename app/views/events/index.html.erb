@@ -1,10 +1,10 @@
 <% if @events.nil? %>
-<h1> Hello world</h1>
+<h1> No events at this time.</h1>
 <% else %>
 <section class="ui middle aligned center aligned grid">
   <ul>
     <% @events.each do |event| %>
-     <li> event.name </li>
+     <li> <%= link_to event.name, event_path(event.uuid)%> </li>
      <li> event.info </li>
      <li> event.date </li>
      <li> event.location </li>
