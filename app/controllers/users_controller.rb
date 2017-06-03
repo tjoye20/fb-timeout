@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:new, :create]
 
   def facebook_create
     if params[:denied]
@@ -26,6 +27,17 @@ class UsersController < ApplicationController
       redirect_to events_path
     end
   end
+
+
+  def create 
+    binding.pry 
+  end 
+
+  private 
+
+  def set_user 
+    @user = current_user
+  end 
 
   protected
 
