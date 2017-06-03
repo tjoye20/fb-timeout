@@ -16,7 +16,7 @@ class EventsController < ApplicationController
 				current_user.events.create(
 					name: event["name"],
 					info: event["description"],
-					date: event["start_time"],
+					date: event["start_time"].to_date,
 					location: event["place"]["name"] + " " + event["place"]["location"]["street"] + " " + event["place"]["location"]["zip"],
 					fb_event_id: event["id"]
 				)

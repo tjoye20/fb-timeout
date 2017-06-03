@@ -4,6 +4,6 @@ class EventsMailer < ApplicationMailer
 		@email = email 
 		@event = event 
 		@event.update(mailed?: true)
-		mail(to: @email, subject: "New FB Event:" + event.name)
+		mail(to: @email, subject: "New FB Event: " + event.name)
 	end 
 end
