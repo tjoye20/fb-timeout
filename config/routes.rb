@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get '/auth/facebook/callback', to: "users#facebook_create"
   get '/auth/google_oauth2/callback', to: "users#google_create"
   get '/new', to: "users#new"
-  post '/new', to: "users#create"
+  patch '/new', to: "users#create"
   get '/logout', to: "sessions#destroy", as: "logout"
   get '/auth/failure', to: "sessions#failure"
 

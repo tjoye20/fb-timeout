@@ -30,7 +30,8 @@ class UsersController < ApplicationController
 
 
   def create 
-    binding.pry 
+    current_user.update(email: params[:facebook_user][:email])
+    redirect_to create_events_path, notice: "Email has been updated."
   end 
 
   private 

@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
 	before_action :user_signed_in?
+	before_action :check_if_user_has_email_setup
 
 	def index 
 		@events = current_user.events
@@ -27,6 +28,10 @@ class EventsController < ApplicationController
 end
 
 private 
+
+def check_if_user_has_email_setup
+	redirect_to new_path if current_user.email.nil?
+end 
 
 def send_event_mails
 	current_user.events.where(mailed?: false).each do |event|
