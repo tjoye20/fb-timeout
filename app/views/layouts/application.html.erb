@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MuteTwitterSpoilers</title>
+    <title>Timeout</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -13,14 +13,14 @@
   </head>
 
   <body>
+  <%= render "layouts/flash" %>
     <section>
       <section class="ui middle aligned center aligned grid">
         <div class="column">
-          <h1>Mute Twitter Spoilers</h1>
+          <h1>Timeout</h1>
           <p>
-            Quickly mute multiple followers that are tweeting spoilers on your timeline.
+            Stay off Facebook, but stay connected with email notifications of event invites.
           </p>
-            <%= render "layouts/flash" %>
         </div>
       </section>
     </section>

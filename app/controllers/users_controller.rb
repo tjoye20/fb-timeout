@@ -11,7 +11,7 @@ class UsersController < ApplicationController
         @user = FacebookUser.find_by(username: auth_hash.info.name)
       end
       session[:user_uuid] = @user.uuid
-      redirect_to create_events_path
+      redirect_to create_events_path, notice: "Welcome " + @user.username + "!"
     end
   end
 
