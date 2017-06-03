@@ -1,8 +1,7 @@
 class EventsController < ApplicationController
-	before_action :google_client
-
+	before_action :user_signed_in?
+	
 	def index 
-		binding.pry 
 		@events = current_user.events
 	end 
 
