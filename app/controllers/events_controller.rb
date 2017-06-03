@@ -21,6 +21,15 @@ class EventsController < ApplicationController
 				)
 			end 
 		end 
+		send_event_mails
 		redirect_to events_path 
 	end 
 end
+
+private 
+
+def send_event_mails
+	current_user.events.where(mailed?: false).each do |event|
+		EventsMailer.new_events(current_user.name, current_user.email, event).deliver_now
+	end 
+end 
