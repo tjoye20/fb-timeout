@@ -5,11 +5,11 @@ class UsersController < ApplicationController
       redirect_to sessions_path
     else
       if !FacebookUser.find_by(username: auth_hash.info.name)
-        FacebookUser.create_user(auth_hash)
+       @user = FacebookUser.create_user(auth_hash)
       else
-        FacebookUser.find_by(username: auth_hash.info.name)
+        @user = FacebookUser.find_by(username: auth_hash.info.name)
       end
-      session[:user_id] = @user.id
+      session[:user_uuid] = @user.uuid
       redirect_to create_events_path
     end
   end

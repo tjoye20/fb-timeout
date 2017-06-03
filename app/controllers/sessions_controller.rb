@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session[:user_id] = nil
+    session[:user_uuid] = nil
     redirect_to root_path, :alert => "Logged out!"
   end
 

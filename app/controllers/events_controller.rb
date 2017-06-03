@@ -11,7 +11,7 @@ class EventsController < ApplicationController
 
 	def create_events 
 		fb_client.get_object("me/events/not_replied").each do |event|
-			if !current_user.events.find_by(event_id: event["id"]) && event["start_time"] > Time.now
+			if !current_user.events.find_by(fb_event_id: event["id"]) && event["start_time"] > Time.now
 				current_user.events.create(
 					name: event["name"],
 					info: event["description"],
