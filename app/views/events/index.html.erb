@@ -5,9 +5,9 @@
   <ul>
     <% @events.each do |event| %>
      <li> <%= link_to event.name, event_path(event.uuid)%> </li>
-     <li> event.info </li>
-     <li> event.date </li>
-     <li> event.location </li>
+     <li> <%= event.info %> </li>
+     <li> <%= event.date %> </li>
+     <li> <%= event.location %> </li><br><br>
     <% end %>
   </ul>
 </section>

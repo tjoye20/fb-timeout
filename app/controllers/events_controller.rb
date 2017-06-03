@@ -35,6 +35,6 @@ end
 
 def send_event_mails
 	current_user.events.where(mailed?: false).each do |event|
-		EventsMailer.new_events(current_user.name, current_user.email, event).deliver_now
+		EventsMailer.new_events(current_user.username, current_user.email, event).deliver_now
 	end 
 end 

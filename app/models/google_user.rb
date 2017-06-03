@@ -1,5 +1,5 @@
 class GoogleUser < ApplicationRecord
-  # belongs_to :facebook_users 
+  # belongs_to :facebook_user 
   before_create :create_uuid
 
   private 
