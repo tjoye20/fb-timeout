@@ -13,7 +13,8 @@ task :check_for_new_events => :environment do
 				)
 			end 
 	 	end 
-	 user.events.where(mailed?: false).each do |event|
-		EventsMailer.new_events(user.username, user.email, event).deliver_now
+		 user.events.where(mailed?: false).each do |event|
+			EventsMailer.new_events(user.username, user.email, event).deliver_now
+		 end 
 	end 
 end
