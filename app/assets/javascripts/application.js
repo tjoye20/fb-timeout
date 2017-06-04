@@ -15,4 +15,11 @@
 //= require turbolinks
 //= require_tree .
 
-  $(".message" ).fadeOut(5000);
+$('.message .close')
+  .on('click', function() {
+    $(this)
+      .closest('.message')
+      .transition('fade')
+    ;
+  })
+;
