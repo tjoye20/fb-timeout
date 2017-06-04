@@ -18,7 +18,8 @@ class EventsController < ApplicationController
 					info: event["description"],
 					date: event["start_time"].to_date,
 					location: event["place"]["name"] + " " + event["place"]["location"]["street"] + " " + event["place"]["location"]["zip"],
-					fb_event_id: event["id"]
+					fb_event_id: event["id"],
+					ticket_link: event["ticket_uri"]
 				)
 			end 
 		end 
