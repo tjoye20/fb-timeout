@@ -1,6 +1,6 @@
 desc "This task is called by the Heroku scheduler add-on"
 task :check_for_new_events => :environment do
-	FacebookUser.all.each |user| do 
+	FacebookUser.all.each do |user| 
 		fb_client = Koala::Facebook::API.new(user.token)
 		fb_client.get_object("me/events/not_replied").each do |event|
 			if !user.events.find_by(fb_event_id: event["id"]) && event["start_time"] > Time.now
