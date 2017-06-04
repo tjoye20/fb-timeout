@@ -1,6 +1,4 @@
 class EventsMailer < ApplicationMailer
-	default from: 'no-reply@nosocial.com'
-
 	def new_events(name, email, event)
 		@name = name 
 		@email = email 
