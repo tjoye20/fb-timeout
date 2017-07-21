@@ -30,6 +30,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'pg'
+gem 'gmail'
 gem 'dotenv-rails', :groups => [:development, :test]
 gem 'pry'
 gem 'rails-controller-testing'
