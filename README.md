@@ -12,3 +12,5 @@ Integrate with Google Calendar, so the events can be automatically added to your
 * Integrate with Google Calendar.
 * Add better UI.
 * Turn it into a PWA.
+
+https://myaccount.google.com/lesssecureapps

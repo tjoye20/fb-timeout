@@ -17,4 +17,7 @@ class ApplicationController < ActionController::Base
     redirect_to new_session_path if !current_user
   end 
  
+  def gmail_user
+    Gmail.connect(:xoauth2, current_user.google_user.email, current_user.google_user.token)
+  end 
 end

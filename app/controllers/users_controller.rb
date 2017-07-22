@@ -11,7 +11,7 @@ class UsersController < ApplicationController
         @user = FacebookUser.find_by(username: auth_hash.info.name)
       end
       session[:user_uuid] = @user.uuid
-      redirect_to create_events_path, notice: "Welcome " + @user.username + "!"
+      redirect_to root_path, notice: "Welcome " + @user.username + "! Sign in with Google now."
     end
   end
 
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
       else
         GoogleUser.find_by(email: auth_hash.info.email)
       end
-      redirect_to events_path
+      redirect_to create_events_path, notice: "Welcome " + current_user.username + "!"
     end
   end
 
