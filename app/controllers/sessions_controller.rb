@@ -5,6 +5,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+  	gmail_user.logout
     session[:user_uuid] = nil
     redirect_to root_path, :alert => "Logged out!"
   end

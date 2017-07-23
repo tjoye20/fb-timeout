@@ -2,6 +2,6 @@ Rails.application.config.middleware.use OmniAuth::Builder do
   provider :facebook, ENV["FB_APP_ID"], ENV["FB_APP_SECRET"],
   scope: "user_events"
   provider :google_oauth2, ENV["GOOGLE_API_ID"], ENV["GOOGLE_API_SECRET"], {
-    scope: ['https://mail.google.com/','plus.login','plus.me','userinfo.email','userinfo.profile']
+    scope: ['https://mail.google.com/','contacts','plus.login','plus.me','userinfo.email','userinfo.profile']
   }
 end

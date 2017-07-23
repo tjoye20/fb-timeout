@@ -24,7 +24,7 @@ class UsersController < ApplicationController
       else
         GoogleUser.find_by(email: auth_hash.info.email)
       end
-      redirect_to create_events_path, notice: "Welcome " + current_user.username + "!"
+      redirect_to root_path, notice: "Welcome " + current_user.username + "!"
     end
   end
 

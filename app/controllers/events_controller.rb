@@ -26,35 +26,25 @@ class EventsController < ApplicationController
 		send_event_mails
 		redirect_to root_path, notice: "Event emails sent." 
 	end 
-end
 
-private 
+	private 
 
-def check_if_user_has_email_setup
-	redirect_to new_path if current_user.email.nil?
-end 
+	def check_if_user_has_email_setup
+		redirect_to new_path if current_user.google_user.email.nil?
+	end 
 
-def send_event_mails
-	current_user.events.where(mailed?: false).each do |event|
-		gmail_user.deliver do 
-			to current_user.google_user.email
-			subject "New FB Event: " + event.name 
-			text_part do 
-				body "You have a new Facebook event: \n Event Name: " + event.name + ",\n Event Date: " + event.date + ",\n Event Location: " + event.location + ",\n Event Info: " + event.info + ",\n Event Tickets: " + event.ticket_link
-			end  
-			html_part do 
-				content_type 'text/html; charset=UTF-8'
-				body "<p>
-      You have a new Facebook event: <br>
-      Event Name: " + event.name + ",
-      Event Date: " + event.date + ",
-      Event Location: " + event.location + ",
-      Get Tickets: " + event.ticket_link + ", <br>
-      Event Info: " + event.info + "
-    </p><br>
-    <p>Have a nice day!</p>"
-
-			end  
+	def send_event_mails
+		@current_user = current_user
+		@google_user_email = current_user.google_user.email
+		@current_user.events.where(mailed?: false).each do |event|
+			email_address = @google_user_email
+			email = gmail_user.compose do 
+				to email_address
+				subject "New FB Event: " + event.name 
+				body "You have a new Facebook event: \n Event Name: " + event.name + ",\n Event Date: " + event.date + ",\n Event Location: " + event.location + ",\n Event Info: " + event.info 
+			end 
+			email.deliver!
+			event.update(mailed?: true)
 		end 
 	end 
-end 
+end
