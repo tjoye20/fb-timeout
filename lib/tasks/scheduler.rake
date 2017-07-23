@@ -14,8 +14,24 @@ task :check_for_new_events => :environment do
 				)
 			end 
 	 	end 
+	gmail_user = Gmail.connect(:xoauth2, user.google_user.email, user.google_user.token)
+	user_email = user.email 
 		 user.events.where(mailed?: false).each do |event|
-			EventsMailer.new_events(user.username, user.email, event).deliver_now
+		 	email_address = user_email
+			email = gmail_user.compose do 
+				to email_address
+				subject "New FB Event: " + event.name 
+				body "You have a new Facebook event: \n Event Name: " + event.name + ",\n Event Date: " + event.date + ",\n Event Location: " + event.location + ",\n Event Info: " + event.info 
+			end 
+			begin 
+				email.deliver!
+				event.update(mailed?: true)
+			rescue
+				5.times do puts "Email delivery failed! gmail_user may have disconnected." end 
+			end 
+
+
+			# EventsMailer.new_events(user.username, user.email, event).deliver_now
 		 end 
 	end 
 end

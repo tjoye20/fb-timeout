@@ -43,8 +43,12 @@ class EventsController < ApplicationController
 				subject "New FB Event: " + event.name 
 				body "You have a new Facebook event: \n Event Name: " + event.name + ",\n Event Date: " + event.date + ",\n Event Location: " + event.location + ",\n Event Info: " + event.info 
 			end 
-			email.deliver!
-			event.update(mailed?: true)
+			begin 
+				email.deliver!
+				event.update(mailed?: true)
+			rescue
+				5.times do puts "Email delivery failed! gmail_user may have disconnected." end 
+			end 
 		end 
 	end 
 end
