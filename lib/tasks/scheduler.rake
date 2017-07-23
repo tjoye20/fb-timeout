@@ -14,9 +14,9 @@ task :check_for_new_events => :environment do
 				)
 			end 
 	 	end 
-	gmail_user = Gmail.connect(:xoauth2, user.google_user.email, user.google_user.token)
-	user_email = user.email 
-		 user.events.where(mailed?: false).each do |event|
+		gmail_user = Gmail.connect(:xoauth2, user.google_user.email, user.google_user.token)
+		user_email = user.email 
+		user.events.where(mailed?: false).each do |event|
 		 	email_address = user_email
 			email = gmail_user.compose do 
 				to email_address
@@ -29,9 +29,6 @@ task :check_for_new_events => :environment do
 			rescue
 				5.times do puts "Email delivery failed! gmail_user may have disconnected." end 
 			end 
-
-
-			# EventsMailer.new_events(user.username, user.email, event).deliver_now
-		 end 
+		end 
 	end 
 end
